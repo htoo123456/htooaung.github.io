@@ -1,0 +1,26 @@
+body {
+    background-color: #2e2e2e !important; 
+}
+.calculator {
+    margin: 50px auto 0px;}
+h6 {
+    margin: 10px 0px;
+    color: black;
+}
+input[type = button] {
+    border: 1px solid lightblue;
+    
+    height: 50px;
+   width: 50px;
+    color: black;
+    border-radius: 5px;
+    background-color: #efefef;
+    box-shadow: rgba(0,0,0,0.2);
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
