@@ -1,10 +1,9 @@
 let buttons = document.querySelectorAll("input[type = button]");
 let input = document.querySelector("input");
-let equal = document.querySelector(".equal");
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
-    
+    input.value.substring(0, input.value.length -1);
     switch (e.target.value) {
       case "=":
         input.value = eval(input.value)
