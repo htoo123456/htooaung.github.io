@@ -52,13 +52,13 @@ tags.forEach((t) => {
 window.addEventListener("load", () => {
   const getFromLs = localStorage.getItem("theme");
   if(getFromLs) {
-    if (color == "Blue") {
+    if (getFromLs == "Blue") {
       changeColor(firstTheme);
-    } else if (color == "White"){
+    } else if (getFromLs == "White"){
       changeColor(secondTheme);
       slider.style.width = "50px";
       slider.style.transform = `translateX(41px)`;
-    } else if (color == "Purple") {
+    } else if (getFromLs == "Purple") {
       changeColor(thirdTheme);
       slider.style.width = "56px";
       slider.style.transform = `translateX(92px)`;
