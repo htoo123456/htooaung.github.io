@@ -1,22 +1,45 @@
-let buttons = document.querySelectorAll("input[type = button]");
-let input = document.querySelector("input");
+const buttons = document.querySelectorAll("input[type = button]");
+const inputSide = document.querySelector(".inputside");
+const input = document.querySelector(".input");
+const arrowLeft = document.querySelector(".arrows");
+const cleanButton = document.querySelector(".clean");
+const fifthLine = document.querySelector(".fifthLine");
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
     switch (e.target.value) {
       case "=":
-        input.value = eval(input.value)
+        if (input.textContent == "") return;
+        let changingValue = (input1) => {
+          let acmultiple = input1.replaceAll("×", "*");
+          let acdivide = acmultiple.replaceAll("÷", "/");
+          let acpower = acdivide.replaceAll("^", "**");
+
+          return acpower;
+        };
+        let value = /×|÷|^|√/.test(input.textContent)
+          ? changingValue(input.textContent)
+          : input.textContent;
+        try {
+          input.textContent = eval(value);
+        } catch (error) {
+          console.log(error);
+        }
+        
+        break;
+      case "Del":
+        let cleanedValue = input.textContent.substring(
+          0,
+          input.textContent.length - 1
+        );
+        input.textContent = cleanedValue;
         break;
       case "AC":
-        input.value = "";
-        break;
-      case "C":
-        let cleanedValue = input.value.substring(0, input.value.length -1);
-        input.value = cleanedValue;
+        input.textContent = "";
         break;
       default:
-        input.value += e.target.value
+        input.textContent += e.target.value;
         break;
     }
-
-  })};
+  });
+}
