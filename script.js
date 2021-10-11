@@ -7,6 +7,9 @@ const fifthLine = document.querySelector(".fifthLine");
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
+    if(input.textContent == "0") {
+      input.textContent = "";
+    }
     switch (e.target.value) {
       case "=":
         if (input.textContent == "") return;
@@ -35,7 +38,7 @@ for (let i = 0; i < buttons.length; i++) {
         input.textContent = cleanedValue;
         break;
       case "AC":
-        input.textContent = "";
+        input.textContent = "0";
         break;
       default:
         input.textContent += e.target.value;
