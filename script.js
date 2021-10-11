@@ -27,7 +27,7 @@ for (let i = 0; i < buttons.length; i++) {
         try {
          const calc = eval(value);
           const parseFloat = String(calc);
-          if(parseFloat.length == "18") {
+          if(Number(parseFloat.length) >= 14 && parseFloat.includes(".")) {
             const toNumber = Number(parseFloat)
             const toBeFixed = toNumber.toFixed(5);
             input.textContent = toBeFixed;
