@@ -25,7 +25,15 @@ for (let i = 0; i < buttons.length; i++) {
           ? changingValue(input.textContent)
           : input.textContent;
         try {
-          input.textContent = eval(value);
+         const calc = eval(value);
+          const parseFloat = String(calc);
+          if(parseFloat.length == "18") {
+            const toNumber = Number(parseFloat)
+            const toBeFixed = toNumber.toFixed(5);
+            input.textContent = toBeFixed;
+          } else {
+            input.textContent = calc;
+          }
         } catch (error) {
           console.log(error);
         }
