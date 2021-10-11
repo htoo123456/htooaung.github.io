@@ -10,6 +10,9 @@ for (let i = 0; i < buttons.length; i++) {
     if(input.textContent == "0") {
       input.textContent = "";
     }
+    if(e.target.value === "." && input.textContent.includes(".")){
+      return;
+    }
     switch (e.target.value) {
       case "=":
         if (input.textContent == "") return;
