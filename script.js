@@ -40,11 +40,19 @@ for (let i = 0; i < buttons.length; i++) {
         
         break;
       case "Del":
-        let cleanedValue = input.textContent.substring(
+        if(input.textContent == "0") {
+          return;
+        } else {
+          const cleanedValue = input.textContent.substring(
           0,
           input.textContent.length - 1
         );
-        input.textContent = cleanedValue;
+          if(cleanedValue == "") {
+            input.textContent = "0";
+          } else {
+            input.textContent = cleanedValue;
+          }
+        }
         break;
       case "AC":
         input.textContent = "0";
