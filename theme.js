@@ -27,6 +27,7 @@ tags.forEach((t) => {
   const li = document.createElement("li");
   li.append(t);
   ulTag.append(li);
+  li.classList.add(tags[t]);
   li.id = tags.indexOf(t);
   li.addEventListener("click", (e) => {
     const target = e.target;
@@ -41,8 +42,6 @@ tags.forEach((t) => {
       changeColor(secondTheme);
     } else if (clicked == 2) {
       changeColor(thirdTheme);
-      console.log(clickedLiTagOffsetLeft);
-      console.log(clickedLiTagWidth);
     }
     slider.style.transform = `translateX(${clickedLiTagOffsetLeft}px)`;
     localStorage.setItem("theme", `${target.textContent}`);
@@ -52,19 +51,23 @@ tags.forEach((t) => {
 window.addEventListener("load", () => {
   const getFromLs = localStorage.getItem("theme");
   if(getFromLs) {
-    if (getFromLs == "Blue") {
-      changeColor(firstTheme);
-    } else if (getFromLs == "White"){
-      changeColor(secondTheme);
-      slider.style.width = "50px";
-      slider.style.transform = `translateX(41px)`;
-    } else if (getFromLs == "Purple") {
-      changeColor(thirdTheme);
-      slider.style.width = "56px";
-      slider.style.transform = `translateX(92px)`;
-    }
+    const element = document.querySelector(`.${getFromLs}`);
+    checkValue(element);
   }
 });
+const checkValue = (liTag) => {
+  if (liTag.textContent == "Blue") {
+  changeColor(firstTheme);
+} else if (liTag.textContent == "White"){
+  changeColor(secondTheme);
+} else if (liTag.textContent == "Purple") {
+  changeColor(thirdTheme);
+}
+const offsetWidth = liTag.offsetWidth;
+const offsetLeft = liTag.offsetLeft;
+slider.style.width = offsetWidth + "px";
+slider.style.transform = `translateX(${offsetLeft}px)`;
+}
 
 const changeColor = (arr) => {
   body.style.backgroundColor = arr[0];
