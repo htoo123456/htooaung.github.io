@@ -27,7 +27,7 @@ tags.forEach((t) => {
   const li = document.createElement("li");
   li.append(t);
   ulTag.append(li);
-  li.classList.add(tags[t]);
+  li.classList.add(t);
   li.id = tags.indexOf(t);
   li.addEventListener("click", (e) => {
     const target = e.target;
@@ -42,6 +42,8 @@ tags.forEach((t) => {
       changeColor(secondTheme);
     } else if (clicked == 2) {
       changeColor(thirdTheme);
+      console.log(clickedLiTagOffsetLeft);
+      console.log(clickedLiTagWidth);
     }
     slider.style.transform = `translateX(${clickedLiTagOffsetLeft}px)`;
     localStorage.setItem("theme", `${target.textContent}`);
@@ -51,6 +53,7 @@ tags.forEach((t) => {
 window.addEventListener("load", () => {
   const getFromLs = localStorage.getItem("theme");
   if(getFromLs) {
+    console.log(typeof getFromLs)
     const element = document.querySelector(`.${getFromLs}`);
     checkValue(element);
   }
@@ -68,7 +71,6 @@ const offsetLeft = liTag.offsetLeft;
 slider.style.width = offsetWidth + "px";
 slider.style.transform = `translateX(${offsetLeft}px)`;
 }
-
 const changeColor = (arr) => {
   body.style.backgroundColor = arr[0];
   calculator.style.backgroundColor = arr[0];
@@ -78,3 +80,4 @@ const changeColor = (arr) => {
   input.style.color = arr[3];
   h6.style.color = arr[3];
 };
+
