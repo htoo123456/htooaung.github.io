@@ -53,7 +53,6 @@ tags.forEach((t) => {
 window.addEventListener("load", () => {
   const getFromLs = localStorage.getItem("theme");
   if(getFromLs) {
-    console.log(typeof getFromLs)
     const element = document.querySelector(`.${getFromLs}`);
     checkValue(element);
   }
