@@ -66,6 +66,7 @@ h6 {
 }
 input[type="button"] {
   font-size: 20px;
+  -webkit-text-size-adjust: 20px;
   border: 1px solid #efefef;
   height: 3rem;
   width: 3rem;
@@ -122,6 +123,7 @@ li:hover {
   justify-content: flex-end;
   align-items: center;
   font-size: 25px;
+  -webkit-text-size-adjust: 25px;
   height: 100%;
   padding-right: 20px;
   color: white;
