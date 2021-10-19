@@ -60,23 +60,24 @@ h6 {
   height: 60px;
   background-color: hsl(224, 36%, 15%);
   transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+.num {
+  background-color: hsl(30, 25%, 89%);
 }
 .yellow {
-  background-color: #ffc107 !important;
+  background-color: #ffc107;
 }
 input[type="button"] {
   font-size: 20px;
-  -webkit-text-size-adjust: 20px;
   border: 1px solid #efefef;
   height: 3rem;
   width: 3rem;
   text-align: center;
   color: black;
   border-radius: 5px;
-  background-color: hsl(30, 25%, 89%);
   transition: all 0.2s ease-in-out;
   box-shadow: 0 0 0.3px hsl(28, 16%, 65%);
-  transition: all 0.2s ease-in-out;
 }
 input[type="button"]:focus {
   background-color: #eee;
@@ -119,16 +120,17 @@ li:hover {
 }
 
 .input {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  display: inline-block;
+  text-align: end;
   font-size: 25px;
-  -webkit-text-size-adjust: 25px;
+  width: 100%;
   height: 100%;
+  line-height: 60px;
   padding-right: 20px;
   color: white;
-  width: 100%;
   border-radius: 5px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 @media screen and (max-width: 425px) {
   .calculator {
