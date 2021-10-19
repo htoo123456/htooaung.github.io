@@ -1,39 +1,27 @@
 const buttons = document.querySelectorAll("input[type = button]");
 const inputSide = document.querySelector(".inputside");
-const input = document.querySelector(".input");
-const arrowLeft = document.querySelector(".arrows");
-const cleanButton = document.querySelector(".clean");
-const fifthLine = document.querySelector(".fifthLine");
+const calculate = (num) {
+  return new Function("return " + num)();
+}
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", (e) => {
-    if(input.textContent == "0") {
+    if(input.textContent == "0" && e.target.value != "Del" && e.target.value != "=") {
       input.textContent = "";
     }
 
     switch (e.target.value) {
       case "=":
-        if (input.textContent == "") return;
-        let changingValue = (input1) => {
-          let acmultiple = input1.replaceAll("×", "*");
-          let acdivide = acmultiple.replaceAll("÷", "/");
-          let acpower = acdivide.replaceAll("^", "**");
-
-          return acpower;
+        const changingValue = (input1) => {
+          const acmultiple = input1.replaceAll("×", "*");
+          const acdivide = acmultiple.replaceAll("÷", "/");
+          return acdivide;
         };
-        let value = /×|÷|^|√/.test(input.textContent)
+        const value = /×|÷|^|√/.test(input.textContent)
           ? changingValue(input.textContent)
           : input.textContent;
         try {
-         const calc = eval(value);
-          const parseFloat = String(calc);
-          if(Number(parseFloat.length) >= 14 && parseFloat.includes(".")) {
-            const toNumber = Number(parseFloat)
-            const toBeFixed = toNumber.toFixed(5);
-            input.textContent = toBeFixed;
-          } else {
-            input.textContent = calc;
-          }
+         input.textContent = calculate(value);
         } catch (error) {
           console.log(error);
         }
