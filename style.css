@@ -109,7 +109,7 @@ input[type="button"]:focus {
 .slider {
   position: absolute;
   bottom: 0px;
-  width: 40px;
+  width: 41px;
   height: 4px;
   background-color: aqua;
   transition: all 0.3s ease-in-out;
