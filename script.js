@@ -1,9 +1,7 @@
 const buttons = document.querySelectorAll("input[type = button]");
 const inputSide = document.querySelector(".inputside");
 const input = document.querySelector(".input");
-const calculate = (fn) => {
-  return new Function("return " + fn)();
-}
+
 buttons.forEach(button => {
   button.addEventListener("click", (e) => {
     if(e.target.classList.contains("num")) {
@@ -23,16 +21,16 @@ buttons.forEach(button => {
 
     switch (e.target.value) {
       case "=":
-        let changingValue = (input1) => {
+        const changingValue = (input1) => {
           let acmultiple = input1.replaceAll("×", "*");
           let acdivide = acmultiple.replaceAll("÷", "/");
           return acdivide;
         };
-        let value = /×|÷|^|√/.test(input.textContent)
+        const value = /×|÷|^|√/.test(input.textContent)
           ? changingValue(input.textContent)
           : input.textContent;
         try {
-          input.textContent = calculate(value);
+          input.textContent = eval(value);
         } catch (error) {
           console.log(error);
         }
